@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/note_navigation"
+    app:startDestination="@id/noteListFragment">
+
+    <fragment
+        android:id="@+id/noteListFragment"
+        android:name="dev.tuanteo.note.view.NoteListFragment"
+        android:label="NoteListFragment"
+        tools:layout="@layout/note_list_fragment">
+        <action
+            android:id="@+id/action_noteListFragment_to_noteNewItemFragment"
+            app:destination="@id/noteNewItemFragment" />
+        <action
+            android:id="@+id/action_noteListFragment_to_noteDetailItemFragment"
+            app:destination="@id/noteDetailItemFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/noteNewItemFragment"
+        android:name="dev.tuanteo.note.view.NoteNewItemFragment"
+        android:label="NoteNewItemFragment"
+        tools:layout="@layout/note_new_item"
+        >
+        <action
+            android:id="@+id/action_noteNewItemFragment_to_noteListFragment"
+            app:destination="@id/noteListFragment"
+            app:popUpTo="@id/noteListFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_noteNewItemFragment_to_noteDetailItemFragment"
+            app:destination="@id/noteDetailItemFragment"
+            app:popUpTo="@id/noteDetailItemFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteDetailItemFragment"
+        android:name="dev.tuanteo.note.view.NoteDetailItemFragment"
+        android:label="NoteDetailItemFragment"
+        tools:layout="@layout/note_detail_item">
+        <action
+            android:id="@+id/action_noteDetailItemFragment_to_noteNewItemFragment"
+            app:destination="@id/noteNewItemFragment" />
+    </fragment>
+</navigation>
