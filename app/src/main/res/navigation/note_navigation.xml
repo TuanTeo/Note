@@ -43,5 +43,15 @@
         <action
             android:id="@+id/action_noteDetailItemFragment_to_noteNewItemFragment"
             app:destination="@id/noteNewItemFragment" />
+        <argument
+            android:name="note_id"
+            app:argType="string" />
+        <argument
+            android:name="note_title"
+            app:argType="string" />
+        <argument
+            android:name="note_content"
+            app:argType="string" />
+
     </fragment>
 </navigation>

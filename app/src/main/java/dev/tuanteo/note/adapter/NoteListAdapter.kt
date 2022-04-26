@@ -3,11 +3,13 @@ package dev.tuanteo.note.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dev.tuanteo.note.databinding.NoteItemBinding
 import dev.tuanteo.note.model.Note
+import dev.tuanteo.note.view.NoteListFragmentDirections
 
 class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NoteDiffCallback()) {
 
@@ -33,7 +35,14 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NoteDi
         : RecyclerView.ViewHolder(binding.root) {
 
         init {
+            /*TuanTeo: Mở trang giao diện xem thông tin 1 note */
             binding.noteContainer.setOnClickListener {
+                it.findNavController().navigate(
+                    NoteListFragmentDirections.actionNoteListFragmentToNoteDetailItemFragment(
+                        binding.note!!.id.toString(),
+                        binding.note!!.title,
+                        binding.note!!.content
+                    ))
             }
         }
 
