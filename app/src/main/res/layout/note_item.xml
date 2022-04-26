@@ -14,12 +14,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <View
+            android:id="@+id/divide"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
         <TextView
             android:id="@+id/note_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divide"
             app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="bold"
             android:text="@{note.title}"
             />
 
@@ -28,6 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="2dp"
+            android:maxLines="3"
+            android:ellipsize="end"
             app:layout_constraintStart_toStartOf="@+id/note_title"
             app:layout_constraintTop_toBottomOf="@+id/note_title"
             android:text="@{note.content}"

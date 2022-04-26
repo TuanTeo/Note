@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:padding="8dp"
         android:layout_width="match_parent"
@@ -11,6 +12,7 @@
             android:hint="@string/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
             app:layout_constraintTop_toTopOf="parent"
             />
 
@@ -19,7 +21,10 @@
             android:hint="@string/enter_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textCapSentences|textMultiLine"
             app:layout_constraintTop_toBottomOf="@+id/note_title"
+            android:background="@null"
+
             />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

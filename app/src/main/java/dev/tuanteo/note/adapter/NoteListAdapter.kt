@@ -1,6 +1,7 @@
 package dev.tuanteo.note.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -19,14 +20,13 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NoteDi
             )
         )
     }
+
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val note = getItem(position)
         if (note != null) {
-            holder.bind(note)
+            holder.bind(note, position != 0)
         }
     }
-
-
 
     class NoteViewHolder (
         private val binding: NoteItemBinding)
@@ -37,7 +37,11 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NoteDi
             }
         }
 
-        fun bind(item: Note) {
+        fun bind(item: Note, hasDivide: Boolean) {
+            if (hasDivide) {
+                binding.divide.visibility = View.VISIBLE
+            }
+
             binding.apply {
                 note = item
                 executePendingBindings()
