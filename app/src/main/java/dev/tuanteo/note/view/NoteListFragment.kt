@@ -7,15 +7,19 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import dev.tuanteo.note.R
+import dev.tuanteo.note.adapter.NoteListAdapter
 import dev.tuanteo.note.databinding.NoteListFragmentBinding
 import dev.tuanteo.note.viewmodel.NoteListViewModel
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class NoteListFragment : Fragment() {
 
+    private val adapter = NoteListAdapter()
     private val viewModel : NoteListViewModel by viewModels()
 
     override fun onCreateView(
@@ -30,8 +34,17 @@ class NoteListFragment : Fragment() {
             findNavController().navigate(NoteListFragmentDirections.actionNoteListFragmentToNoteNewItemFragment())
         }
 
-        viewModel.getAllNote(context = requireContext())
+        binding.listNotesRecyclerview.adapter = adapter
+
+        /*TuanTeo: Set data cho recycler view */
+        setDataOnView()
 
         return binding.root
+    }
+
+    private fun setDataOnView() {
+        lifecycleScope.launch {
+            adapter.submitList(viewModel.displayAllNote())
+        }
     }
 }
