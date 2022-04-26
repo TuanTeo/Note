@@ -18,6 +18,11 @@ class NoteNewItemViewModel @Inject constructor(
             /*TuanTeo: Them Note moi */
             val note = Note(title = title, content = content)
 
+            if (note.content == "" && note.title == "") {
+                // Do nothing
+                return
+            }
+
             viewModelScope.launch {
                 noteRepository.insertNote(note)
             }
