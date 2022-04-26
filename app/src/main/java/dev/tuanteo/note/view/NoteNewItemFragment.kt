@@ -30,8 +30,8 @@ class NoteNewItemFragment : Fragment() {
             /*TuanTeo: Luu thong tin note moi */
             viewModel.saveNote(
                 null,
-                binding.noteTitle.text.toString(),
-                binding.noteContent.text.toString()
+                binding.noteTitle.text.toString().trim(),
+                binding.noteContent.text.toString().trim()
             )
 
             findNavController().navigate(
