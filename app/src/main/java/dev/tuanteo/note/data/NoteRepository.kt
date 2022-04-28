@@ -10,4 +10,6 @@ class NoteRepository @Inject constructor(
     suspend fun getAllNote() = noteDatabaseDao.getAllNotes()
 
     suspend fun insertNote(note: Note) = noteDatabaseDao.insert(note)
+
+    fun get(id: Long) = noteDatabaseDao.get(id)
 }

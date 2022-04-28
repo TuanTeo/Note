@@ -18,7 +18,7 @@ interface NoteDatabaseDAO {
 
     /*TuanTeo: Dung dau : de anh xa doi so trong ham (VD: key) */
     @Query("Select * From ${Constants.NOTE_DATABASE_NAME} Where id = :key")
-    suspend fun get(key : Long) : Note?
+    fun get(key : Long) : Flow<Note>
 
     @Delete
     suspend fun delete(note: Note)

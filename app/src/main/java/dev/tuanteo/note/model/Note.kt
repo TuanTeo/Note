@@ -9,5 +9,5 @@ import dev.tuanteo.note.utilities.Constants
 data class Note(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id : Long = 0,
     @ColumnInfo(name = "title") val title : String,
-    @ColumnInfo(name = "content") val content: String) {
-}
+    @ColumnInfo(name = "content") val content: String,
+    @ColumnInfo(name = "date") val date: String)
