@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/noteListFragment"
         android:name="dev.tuanteo.note.view.NoteListFragment"
-        android:label="NoteListFragment"
+        android:label="List Note"
         tools:layout="@layout/note_list_fragment">
         <action
             android:id="@+id/action_noteListFragment_to_noteNewItemFragment"
@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/noteNewItemFragment"
         android:name="dev.tuanteo.note.view.NoteNewItemFragment"
-        android:label="NoteNewItemFragment"
+        android:label="New Note"
         tools:layout="@layout/note_new_item"
         >
         <action
@@ -38,7 +38,7 @@
     <fragment
         android:id="@+id/noteDetailItemFragment"
         android:name="dev.tuanteo.note.view.NoteDetailItemFragment"
-        android:label="NoteDetailItemFragment"
+        android:label="Detail Note"
         tools:layout="@layout/note_detail_item">
         <action
             android:id="@+id/action_noteDetailItemFragment_to_noteNewItemFragment"
