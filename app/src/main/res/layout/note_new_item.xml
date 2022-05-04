@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="note"
+            type="dev.tuanteo.note.model.Note" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:padding="8dp"
         android:layout_width="match_parent"
@@ -14,6 +20,7 @@
             android:layout_height="wrap_content"
             android:inputType="textCapSentences"
             app:layout_constraintTop_toTopOf="parent"
+            android:text="@{note.title}"
             />
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -24,7 +31,7 @@
             android:inputType="textCapSentences|textMultiLine"
             app:layout_constraintTop_toBottomOf="@+id/note_title"
             android:background="@null"
-
+            android:text="@{note.content}"
             />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

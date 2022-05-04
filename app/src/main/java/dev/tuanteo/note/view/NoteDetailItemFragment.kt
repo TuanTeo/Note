@@ -37,7 +37,9 @@ class NoteDetailItemFragment : Fragment() {
 
         binding.closeButton.setOnClickListener {
             findNavController().navigate(
-                NoteDetailItemFragmentDirections.actionNoteDetailItemFragmentToNoteNewItemFragment())
+                NoteDetailItemFragmentDirections.actionNoteDetailItemFragmentToNoteNewItemFragment(
+                    binding.note!!.id.toString()
+                ))
         }
 
         return binding.root

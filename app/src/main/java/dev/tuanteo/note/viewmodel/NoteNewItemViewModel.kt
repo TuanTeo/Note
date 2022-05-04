@@ -1,7 +1,9 @@
 package dev.tuanteo.note.viewmodel
 
 import android.os.Build
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.tuanteo.note.data.NoteRepository
@@ -15,7 +17,14 @@ class NoteNewItemViewModel @Inject constructor(
     private val noteRepository : NoteRepository
 ) : ViewModel() {
 
-    fun saveNote(idNote: String?, title: String, content: String) {
+    var note: LiveData<Note>? = null
+
+    fun saveNote(idNote: Long?, title: String, content: String) {
+        if (title == "" || content == "") {
+            // Do nothing
+            return
+        }
+
         if (idNote == null) {
             /*TuanTeo: Them Note moi */
             val note = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -24,18 +33,26 @@ class NoteNewItemViewModel @Inject constructor(
                 TODO("VERSION.SDK_INT < O")
             }
 
-            if (note.content == "" && note.title == "") {
-                // Do nothing
-                return
-            }
-
             viewModelScope.launch {
                 noteRepository.insertNote(note)
             }
         } else {
-            /*TODO TuanTeo: Cap nhat Note cu */
+                val note = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    Note(id = idNote, title, content, date = DateUtils.getCurrentDateAsString())
+                } else {
+                    TODO("VERSION.SDK_INT < O")
+                }
+
+            viewModelScope.launch {
+                noteRepository.update(note)
+            }
         }
 
+    }
+
+
+    fun getNote(id: Long) {
+        note = noteRepository.get(id).asLiveData()
     }
 
 }

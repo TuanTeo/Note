@@ -31,7 +31,9 @@ class NoteListFragment : Fragment() {
             inflater, R.layout.note_list_fragment, container, false)
 
         binding.addNoteButton.setOnClickListener {
-            findNavController().navigate(NoteListFragmentDirections.actionNoteListFragmentToNoteNewItemFragment())
+            findNavController().navigate(NoteListFragmentDirections.actionNoteListFragmentToNoteNewItemFragment(
+                ""
+            ))
         }
 
         binding.listNotesRecyclerview.adapter = adapter

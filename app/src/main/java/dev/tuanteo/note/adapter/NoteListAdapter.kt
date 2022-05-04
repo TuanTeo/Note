@@ -39,9 +39,7 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NoteDi
             binding.noteContainer.setOnClickListener {
                 it.findNavController().navigate(
                     NoteListFragmentDirections.actionNoteListFragmentToNoteDetailItemFragment(
-                        binding.note!!.id.toString(),
-                        binding.note!!.title,
-                        binding.note!!.content
+                        binding.note!!.id.toString()
                     ))
             }
         }
