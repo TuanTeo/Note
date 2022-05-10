@@ -14,7 +14,7 @@ interface NoteDatabaseDAO {
     suspend fun update(note : Note)
 
     @Query("Select * From ${Constants.NOTE_DATABASE_NAME}")
-    suspend fun getAllNotes() : List<Note>
+    fun getAllNotes() : Flow<List<Note>>
 
     /*TuanTeo: Dung dau : de anh xa doi so trong ham (VD: key) */
     @Query("Select * From ${Constants.NOTE_DATABASE_NAME} Where id = :key")

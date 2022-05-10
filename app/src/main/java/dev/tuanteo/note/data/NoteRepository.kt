@@ -7,7 +7,7 @@ class NoteRepository @Inject constructor(
     private val noteDatabaseDao : NoteDatabaseDAO
 ) {
 
-    suspend fun getAllNote() = noteDatabaseDao.getAllNotes()
+    fun getAllNote() = noteDatabaseDao.getAllNotes()
 
     suspend fun insertNote(note: Note) = noteDatabaseDao.insert(note)
 

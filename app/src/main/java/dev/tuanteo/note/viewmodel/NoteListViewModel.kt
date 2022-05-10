@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.tuanteo.note.data.NoteRepository
 import dev.tuanteo.note.model.Note
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -12,18 +13,10 @@ class NoteListViewModel @Inject constructor(
     private val noteRepository : NoteRepository
 ) : ViewModel() {
 
-    private var swipedNote: Note? = null
-
     /*TuanTeo: Tao cau truc dong goi cho LiveData */
-    private val _listNotes = MutableLiveData<List<Note>>()
-    val listNotes: LiveData<List<Note>>
-        get() = _listNotes
+    val listNotes: LiveData<List<Note>> = noteRepository.getAllNote().asLiveData()
 
-
-    suspend fun displayAllNote(): List<Note> {
-        // TODO: Fragment theo doi bien nay de update adapter
-        return noteRepository.getAllNote()
-    }
+    private var swipedNote: Note? = null
 
     fun saveSwipedNoteID(note: Note) {
         swipedNote = note

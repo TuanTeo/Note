@@ -143,8 +143,8 @@ class NoteListFragment : Fragment() {
     }
 
     private fun setDataOnView() {
-        lifecycleScope.launch {
-            adapter.submitList(viewModel.displayAllNote())
+        viewModel.listNotes.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
         }
     }
 }
