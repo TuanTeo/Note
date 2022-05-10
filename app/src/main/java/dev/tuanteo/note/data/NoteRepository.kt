@@ -14,4 +14,6 @@ class NoteRepository @Inject constructor(
     fun get(id: Long) = noteDatabaseDao.get(id)
 
     suspend fun update(note: Note) = noteDatabaseDao.update(note)
+
+    suspend fun delete(note: Note) = noteDatabaseDao.delete(note)
 }

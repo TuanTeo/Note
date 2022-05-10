@@ -6,4 +6,6 @@
     <string name="title">Title</string>
     <string name="enter_content">Enter content</string>
     <string name="submit_button">submit button</string>
+    <string name="delete_dialog_title">Are you sure?</string>
+    <string name="delete_dialog_message">will be permanently deleted.</string>
 </resources>
